@@ -672,14 +672,7 @@ footer {
     text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-    .slider-container {
-        height: 350px;
-    }
-    .three-overlay h2 {
-        font-size: 2rem;
-    }
-}
+/* Removed simple mobile query to use the comprehensive one at the bottom */
 /* Scroll Progress Tire Indicator */
 .scroll-progress-container {
   position: fixed;
@@ -741,4 +734,114 @@ footer {
   opacity: 1;
 }
 
-/* End of file */
+/* --- RESPONSIVIDADE PARA SMARTPHONES --- */
+@media (max-width: 768px) {
+    /* Esconder o pneu lateral no mobile para dar espaço ao conteúdo */
+    .scroll-progress-container {
+        display: none;
+    }
+
+    /* Ajuste da Logo */
+    .logo {
+        height: 60px; /* Menor no mobile */
+    }
+
+    /* Navegação Mobile */
+    nav {
+        padding: 0.5rem 3%;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links span {
+        display: none; /* Esconde o texto, deixa só os ícones no menu superior se ficar apertado */
+    }
+
+    .nav-links i {
+        font-size: 1.5rem;
+    }
+
+    /* Hero e Carrossel */
+    .hero-carousel {
+        height: 80vh;
+    }
+
+    .carousel-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .carousel-content p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    /* Seções de Texto e Imagem */
+    .about-container {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .about-image img {
+        box-shadow: 10px 10px 0 var(--primary); /* Sombra menor */
+    }
+
+    .about-text h2 {
+        font-size: 2rem !important;
+    }
+
+    /* Estatísticas */
+    .stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .stat-item h4 {
+        font-size: 2rem;
+    }
+
+    /* Slider Antes e Depois */
+    .slider-container {
+        height: 300px;
+        margin: 20px auto;
+        border-width: 2px;
+    }
+
+    .label-before, .label-after {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+
+    /* 3D Experience */
+    #three-container {
+        height: 400px;
+    }
+
+    .three-overlay h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Rodapé e Contato */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.8rem;
+    }
+}
