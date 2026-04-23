@@ -108,12 +108,13 @@ nav.scrolled {
   transition: var(--transition);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--primary);
   transform: translateY(-3px);
 }
 
-.nav-links a:hover i {
+.nav-links a.active i {
   filter: drop-shadow(0 0 5px var(--primary));
 }
 
