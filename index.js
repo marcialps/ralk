@@ -16,15 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBtn) {
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            
-            // Animate hamburger to X (optional enhancement)
             const icon = menuBtn.querySelector('i');
             if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+                icon.classList.replace('fa-bars', 'fa-times');
             } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                icon.classList.replace('fa-times', 'fa-bars');
             }
         });
     }
@@ -33,10 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
+            const icon = menuBtn.querySelector('i');
+            if (icon) icon.classList.replace('fa-times', 'fa-bars');
         });
     });
 
-    // Scroll Reveal Animation
+    // Scroll Reveal Animation with Staggering
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -46,11 +44,68 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                // Trigger counter animation if it's the stats section
+                if (entry.target.classList.contains('stats')) {
+                    animateCounters();
+                }
             }
         });
     }, observerOptions);
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Animated Counters Logic
+    function animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            if (counter.classList.contains('animated')) return;
+            counter.classList.add('animated');
+            
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            
+            let current = 0;
+            const updateCount = () => {
+                current += increment;
+                if (current < target) {
+                    counter.innerText = Math.ceil(current) + (target > 10 ? '+' : '');
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counter.innerText = target + (target > 10 ? '+' : '');
+                }
+            };
+            updateCount();
+        });
+    }
+
+    // Contact Form Handling
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button');
+            const originalText = btn.innerText;
+            
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                btn.style.backgroundColor = 'var(--primary)';
+                btn.style.color = '#020617';
+                btn.innerText = 'Mensagem Enviada!';
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    btn.style.backgroundColor = '';
+                    btn.style.color = '';
+                }, 3000);
+            }, 1500);
+        });
+    }
 
     // Smooth Scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -131,9 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tireSlider && foregroundImg && sliderButton) {
         tireSlider.addEventListener('input', (e) => {
             const sliderPos = e.target.value;
-            // Update clip-path to reveal/hide image (reveals from left to right)
             foregroundImg.style.clipPath = `inset(0 ${100 - sliderPos}% 0 0)`;
-            // Update button position
             sliderButton.style.left = `${sliderPos}%`;
         });
     }
@@ -149,90 +202,70 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.setPixelRatio(window.devicePixelRatio);
         threeContainer.appendChild(renderer.domElement);
 
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
         scene.add(ambientLight);
         
-        const pointLight = new THREE.PointLight(0x2e7d32, 1);
+        const pointLight = new THREE.PointLight(0x22c55e, 2);
         pointLight.position.set(5, 5, 5);
         scene.add(pointLight);
 
-        const spotLight = new THREE.SpotLight(0xffffff, 1);
-        spotLight.position.set(-5, 5, 2);
-        scene.add(spotLight);
+        const blueLight = new THREE.PointLight(0x1e40af, 1);
+        blueLight.position.set(-5, -5, 5);
+        scene.add(blueLight);
 
-        // Tire Geometry (Torus)
-        const geometry = new THREE.TorusGeometry(3, 1.2, 32, 100);
-        
-        // Textures
-        const textureLoader = new THREE.TextureLoader();
-        const wornTexture = textureLoader.load('hero_tire_industrial_1776526957664.png');
-        const newTexture = textureLoader.load('hero_tire_industrial_1776526957664.png');
-
-        wornTexture.wrapS = THREE.RepeatWrapping;
-        wornTexture.wrapT = THREE.RepeatWrapping;
-        wornTexture.repeat.set(4, 1);
-
-        newTexture.wrapS = THREE.RepeatWrapping;
-        newTexture.wrapT = THREE.RepeatWrapping;
-        newTexture.repeat.set(4, 1);
-
-        // Materials
-        const wornMaterial = new THREE.MeshStandardMaterial({ 
-            map: wornTexture,
-            roughness: 0.8,
-            metalness: 0.2
-        });
-
-        const newMaterial = new THREE.MeshStandardMaterial({ 
-            map: newTexture,
-            roughness: 0.5,
-            metalness: 0.3,
+        const geometry = new THREE.SphereGeometry(3.5, 64, 64);
+        const material = new THREE.MeshStandardMaterial({ 
+            color: 0x22c55e,
+            wireframe: true,
             transparent: true,
-            opacity: 0
+            opacity: 0.6,
+            emissive: 0x16a34a,
+            emissiveIntensity: 0.5
         });
 
-        // Meshes
-        const tireWorn = new THREE.Mesh(geometry, wornMaterial);
-        const tireNew = new THREE.Mesh(geometry, newMaterial);
+        const innerGeometry = new THREE.SphereGeometry(3.4, 32, 32);
+        const innerMaterial = new THREE.MeshStandardMaterial({
+            color: 0x020617,
+            transparent: true,
+            opacity: 0.4
+        });
+
+        const globe = new THREE.Mesh(geometry, material);
+        const innerGlobe = new THREE.Mesh(innerGeometry, innerMaterial);
         
-        const tireGroup = new THREE.Group();
-        tireGroup.add(tireWorn);
-        tireGroup.add(tireNew);
-        scene.add(tireGroup);
+        const globeGroup = new THREE.Group();
+        globeGroup.add(globe);
+        globeGroup.add(innerGlobe);
+        scene.add(globeGroup);
+
+        for(let i = 0; i < 30; i++) {
+            const dotGeom = new THREE.SphereGeometry(0.06, 8, 8);
+            const dotMat = new THREE.MeshBasicMaterial({ color: 0x22c55e });
+            const dot = new THREE.Mesh(dotGeom, dotMat);
+            const phi = Math.acos(-1 + (2 * i) / 30);
+            const theta = Math.sqrt(30 * Math.PI) * phi;
+            dot.position.setFromSphericalCoords(3.5, phi, theta);
+            globeGroup.add(dot);
+        }
 
         camera.position.z = 10;
 
-        // Animation / Scroll Logic
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) - 0.5;
+            mouseY = (e.clientY / window.innerHeight) - 0.5;
+        });
+
         function animate() {
             requestAnimationFrame(animate);
-            
-            // Subtle constant rotation
-            tireGroup.rotation.y += 0.005;
-            
+            globeGroup.rotation.y += 0.003;
+            globeGroup.rotation.y += mouseX * 0.03;
+            globeGroup.rotation.x += mouseY * 0.03;
             renderer.render(scene, camera);
         }
         animate();
 
-        // Scroll linked animation
-        window.addEventListener('scroll', () => {
-            const section = document.getElementById('experience-3d');
-            const rect = section.getBoundingClientRect();
-            const scrollPercent = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-            
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                // Rotate based on scroll
-                tireGroup.rotation.x = scrollPercent * Math.PI * 2;
-                tireGroup.rotation.z = scrollPercent * Math.PI;
-                
-                // Blend textures
-                // As we scroll through the section, the "new" texture becomes visible
-                const blendFactor = Math.max(0, Math.min(1, (scrollPercent - 0.2) * 2));
-                newMaterial.opacity = blendFactor;
-            }
-        });
-
-        // Handle Resize
         window.addEventListener('resize', () => {
             camera.aspect = threeContainer.clientWidth / threeContainer.clientHeight;
             camera.updateProjectionMatrix();
@@ -240,34 +273,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Scroll Progress Tire Logic ---
-    const scrollTire = document.getElementById('scrollTire');
-    const tireTrack = document.getElementById('tireTrack');
+    // --- Scroll Progress Indicator Logic ---
+    const scrollIndicator = document.getElementById('scrollTire');
+    const track = document.getElementById('tireTrack');
 
     window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
 
-        if (scrollTire && tireTrack) {
-            // Update track height
-            tireTrack.style.height = scrolled + "%";
-            // Update tire position
-            scrollTire.style.top = scrolled + "%";
-            // Rotate tire (faster rotation for dynamic feel)
-            scrollTire.style.transform = `translate(-50%, -50%) rotate(${winScroll * 0.8}deg)`;
-
-            // Transition from worn (gray) to recapado (green)
-            if (scrolled > 85) {
-                scrollTire.classList.add('recapado');
-                scrollTire.style.filter = "none";
-            } else {
-                scrollTire.classList.remove('recapado');
-                // More dramatic transition: very dark and blurry at top, clear at bottom
-                const gray = Math.min(100, 120 - scrolled);
-                const blur = Math.max(0, 2 - scrolled / 40);
-                scrollTire.style.filter = `grayscale(${gray}%) blur(${blur}px) brightness(${0.4 + scrolled/150})`;
-            }
+        if (scrollIndicator && track) {
+            track.style.height = scrolled + "%";
+            scrollIndicator.style.top = scrolled + "%";
+            
+            // Subtle pulse based on scroll
+            const scale = 1 + Math.sin(winScroll * 0.05) * 0.1;
+            scrollIndicator.style.transform = `translate(-50%, -50%) scale(${scale})`;
         }
     });
 });
+
