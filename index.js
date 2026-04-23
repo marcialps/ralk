@@ -178,19 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoPlay();
     }
 
-    // --- Before/After Slider Logic ---
-    const tireSlider = document.getElementById('tire-slider');
-    const foregroundImg = document.getElementById('foregroundImg');
-    const sliderButton = document.getElementById('sliderBtn');
-
-    if (tireSlider && foregroundImg && sliderButton) {
-        tireSlider.addEventListener('input', (e) => {
-            const sliderPos = e.target.value;
-            foregroundImg.style.clipPath = `inset(0 ${100 - sliderPos}% 0 0)`;
-            sliderButton.style.left = `${sliderPos}%`;
-        });
-    }
-
     // --- Three.js 3D Experience Logic ---
     const threeContainer = document.getElementById('three-container');
     if (threeContainer && typeof THREE !== 'undefined') {

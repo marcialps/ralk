@@ -37,7 +37,8 @@
         <ul class="nav-links">
             <li><a href="#home"><i class="fas fa-home"></i><span>Home</span></a></li>
             <li><a href="#services"><i class="fas fa-truck-loading"></i><span>Serviços</span></a></li>
-            <li><a href="#about"><i class="fas fa-users"></i><span>Cooperativa</span></a></li>
+            <li><a href="#about"><i class="fas fa-users"></i><span>Missão</span></a></li>
+            <li><a href="#cooperados"><i class="fas fa-handshake"></i><span>Cooperados</span></a></li>
             <li><a href="#quality"><i class="fas fa-check-double"></i><span>Qualidade</span></a></li>
             <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contato</span></a></li>
         </ul>
@@ -170,6 +171,33 @@
         </div>
     </section>
 
+    <!-- Cooperados Section -->
+    <section id="cooperados" style="background: linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.05));">
+        <div class="section-title reveal">
+            <h2>Vantagens para <span style="color: var(--primary);">Cooperados</span></h2>
+            <div class="underline"></div>
+            <p style="color: var(--text-muted); margin-top: 15px; max-width: 700px; margin-left: auto; margin-right: auto;">Mais do que uma cooperativa, somos um ecossistema de suporte para o transportador.</p>
+        </div>
+        
+        <div class="advantages-grid">
+            <div class="advantage-card reveal">
+                <div class="advantage-border"></div>
+                <h3>Ajuda Mútua</h3>
+                <p>Proteção contra danos materiais, incêndio e roubo para o seu veículo, com a segurança de um fundo cooperativo sólido.</p>
+            </div>
+            <div class="advantage-card reveal">
+                <div class="advantage-border"></div>
+                <h3>Compras Coletivas</h3>
+                <p>Pneus, filtros e lubrificantes com preços que só o volume de uma cooperativa de grande porte consegue negociar.</p>
+            </div>
+            <div class="advantage-card reveal">
+                <div class="advantage-border"></div>
+                <h3>Abastecimento</h3>
+                <p>Acesso a combustível com condições diferenciadas em nossa ampla rede credenciada em todo o território nacional.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Quality/Maintenance Section -->
     <section id="quality">
         <div class="section-title reveal">
@@ -178,15 +206,38 @@
             <p style="color: var(--text-muted); margin-top: 15px;">Manutenção rigorosa e cuidado com a frota garantem viagens seguras e eficientes.</p>
         </div>
 
-        <!-- Before/After Slider (Maintenance/Cleaning) -->
-        <div class="slider-container reveal">
-            <div class="slider-img background-img" style="background-image: url('truck_fleet_highway_1776527090184.png');"></div>
-            <div class="slider-img foreground-img" id="foregroundImg" style="background-image: url('truck_fleet_highway_1776527090184.png');"></div>
-            <input type="range" min="0" max="100" value="50" class="slider" id="tire-slider">
-            <div class="slider-button" id="sliderBtn"></div>
-            <div class="slider-labels">
-                <span class="label-before">Manutenção</span>
-                <span class="label-after">Pronto p/ Estrada</span>
+        <!-- New Operational Excellence Visual -->
+        <div class="excellence-container reveal">
+            <div class="tech-visual">
+                <img src="truck_fleet_highway_1776527090184.png" alt="Frota COOTAC" class="tech-img">
+                <div class="scanner-line"></div>
+                <div class="tech-overlay-point point-1" data-info="Telemetria Avançada"></div>
+                <div class="tech-overlay-point point-2" data-info="Segurança Ativa"></div>
+                <div class="tech-overlay-point point-3" data-info="Manutenção Preditiva"></div>
+            </div>
+            
+            <div class="excellence-grid">
+                <div class="excellence-item">
+                    <i class="fas fa-microchip"></i>
+                    <div>
+                        <h4>Manutenção Preditiva</h4>
+                        <p>Nossos veículos passam por diagnósticos digitais constantes, antecipando falhas e garantindo 100% de disponibilidade da frota.</p>
+                    </div>
+                </div>
+                <div class="excellence-item">
+                    <i class="fas fa-satellite-dish"></i>
+                    <div>
+                        <h4>Monitoramento 24h</h4>
+                        <p>Controle total via satélite, garantindo que a carga e o motorista estejam sempre protegidos e dentro da rota otimizada.</p>
+                    </div>
+                </div>
+                <div class="excellence-item">
+                    <i class="fas fa-leaf"></i>
+                    <div>
+                        <h4>Eco-Eficiência</h4>
+                        <p>Gestão rigorosa de consumo e emissões, aliando alta performance com o menor impacto ambiental possível.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
