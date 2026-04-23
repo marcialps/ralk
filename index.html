@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COOTAC | Cooperativa de Transportadores de Carga de Ijuí-RS</title>
+    <meta name="description" content="COOTAC - Cooperativa dos Transportadores Autônomos de Carga de Ijuí Ltda. União, segurança e eficiência no transporte rodoviário nacional.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- Scroll Progress Tire -->
+    <div class="scroll-progress-container">
+        <div class="tire-track" id="tireTrack"></div>
+        <div class="progress-tire" id="scrollTire">
+            <div class="tire-visual"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="home">
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="COOTAC Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="#services"><i class="fas fa-truck"></i><span>Serviços</span></a></li>
+            <li><a href="#about"><i class="fas fa-handshake"></i><span>Cooperativa</span></a></li>
+            <li><a href="#quality"><i class="fas fa-shield-alt"></i><span>Segurança</span></a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contato</span></a></li>
+        </ul>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Carousel Hero Section -->
+    <header class="hero-carousel">
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active" style="background-image: url('truck_fleet_highway_1776527090184.png');">
+                <div class="carousel-content reveal">
+                    <h1>União que Move<br>o Brasil</h1>
+                    <p>A COOTAC une a força dos transportadores autônomos para entregar excelência em logística e transporte rodoviário nacional.</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary">Seja um Cooperado</a>
+                        <a href="#services" class="btn" style="color: white; margin-left: 20px;">Nossos Serviços</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item" style="background-image: url('hero_tire_industrial_1776526957664.png');">
+                <div class="carousel-content">
+                    <h1>Logística de<br>Alta Performance</h1>
+                    <p>Transporte especializado de alimentos, equipamentos agrícolas e cargas gerais com a segurança que sua empresa precisa.</p>
+                    <div class="hero-btns">
+                        <a href="#services" class="btn btn-primary">Conheça Nossas Rotas</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item" style="background-image: url('workshop_clean_organized_1776527177053.png');">
+                <div class="carousel-content">
+                    <h1>Benefícios em<br>Cada Quilômetro</h1>
+                    <p>Sistema de ajuda mútua, compras coletivas e suporte total ao motorista. Juntos, reduzimos custos e aumentamos resultados.</p>
+                    <div class="hero-btns">
+                        <a href="#about" class="btn btn-primary">Ver Vantagens</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </header>
+    
+    <!-- 3D Experience Section -->
+    <section id="experience-3d" class="reveal">
+        <div class="three-canvas-container" id="three-container"></div>
+        <div class="three-overlay">
+            <h2 id="three-text">Tecnologia em Cada Giro</h2>
+            <p id="three-sub">Transformando carcaças em performance de alta quilometragem.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-title reveal">
+            <h2>Nossas Soluções</h2>
+            <div class="underline"></div>
+            <p style="color: var(--text-muted); margin-top: 15px;">Transformamos pneus usados em novos horizontes de produtividade.</p>
+        </div>
+        <div class="services-grid">
+            <div class="card reveal">
+                <i class="fas fa-box-open"></i>
+                <h3>Cargas Gerais</h3>
+                <p>Transporte rodoviário nacional com rastreamento e total segurança para diversos tipos de mercadorias.</p>
+            </div>
+            <div class="card reveal">
+                <i class="fas fa-apple-alt"></i>
+                <h3>Produtos Alimentícios</h3>
+                <p>Logística especializada para o setor de alimentos, garantindo integridade e prazos rigorosos.</p>
+            </div>
+            <div class="card reveal">
+                <i class="fas fa-tractor"></i>
+                <h3>Equipamentos Agrícolas</h3>
+                <p>Transporte pesado e especializado de máquinas para o setor que move o agronegócio brasileiro.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="background-color: #020617;">
+        <div class="about-container">
+            <div class="about-image reveal">
+                <img src="truck_fleet_highway_1776527090184.png" alt="COOTAC Frota">
+            </div>
+            <div class="about-text reveal">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Força Cooperativa</h2>
+                <p style="margin-bottom: 20px;">Fundada em 2014 em Ijuí/RS, a COOTAC nasceu da união de transportadores autônomos que buscavam maior competitividade e segurança no mercado.</p>
+                <p style="margin-bottom: 30px;">Hoje, somos centenas de cooperados unidos por um sistema de ajuda mútua e gestão democrática, oferecendo serviços de alta qualidade para clientes em todo o país.</p>
+                <a href="#contact" class="btn btn-primary">Fazer Parte da COOTAC</a>
+            </div>
+        </div>
+        
+        <div class="stats reveal">
+            <div class="stat-item">
+                <h4>10+</h4>
+                <p>Anos de História</p>
+            </div>
+            <div class="stat-item">
+                <h4>100+</h4>
+                <p>Cooperados</p>
+            </div>
+            <div class="stat-item">
+                <h4>BRASIL</h4>
+                <p>Atendimento Nacional</p>
+            </div>
+            <div class="stat-item">
+                <h4>24h</h4>
+                <p>Suporte ao Associado</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content/Process Section -->
+    <section id="quality">
+        <div class="section-title reveal">
+            <h2>Segurança em Primeiro Lugar</h2>
+            <div class="underline"></div>
+            <p style="color: var(--text-muted); margin-top: 15px;">Manutenção rigorosa e carinho com a frota garantem viagens sem imprevistos.</p>
+        </div>
+
+        <!-- Before/After Slider -->
+        <div class="slider-container reveal">
+            <div class="slider-img background-img" style="background-image: url('hero_tire_industrial_1776526957664.png');"></div>
+            <div class="slider-img foreground-img" id="foregroundImg" style="background-image: url('hero_tire_industrial_1776526957664.png');"></div>
+            <input type="range" min="0" max="100" value="50" class="slider" id="tire-slider">
+            <div class="slider-button" id="sliderBtn"></div>
+            <div class="slider-labels">
+                <span class="label-before">Manutenção</span>
+                <span class="label-after">Pronto p/ Estrada</span>
+            </div>
+        </div>
+
+        <div class="about-container" style="flex-direction: row-reverse; margin-top: 60px;">
+            <div class="about-image reveal">
+                <img src="retreading_process_1776527065172.png" alt="Manutenção COOTAC">
+            </div>
+            <div class="about-text reveal">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Gestão de Frota</h2>
+                <p style="margin-bottom: 20px;">Através de nossas parcerias e sistema de compras coletivas, garantimos que cada pneu e peça utilizada na frota de nossos cooperados tenha a máxima qualidade.</p>
+                <div style="margin-top: 30px;">
+                    <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                        <i class="fas fa-check-circle" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <p>Redução de custos com compras coletivas.</p>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                        <i class="fas fa-check-circle" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <p>Ajuda mútua para cobertura de sinistros.</p>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <i class="fas fa-check-circle" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <p>Foco na segurança do motorista e da carga.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section style="background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('truck_fleet_highway_1776527090184.png'); background-size: cover; text-align: center; color: white;">
+        <div class="reveal">
+            <h2 style="font-size: 3rem; margin-bottom: 20px; color: white;">Sustentabilidade em cada Giro</h2>
+            <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; color: rgba(255, 255, 255, 0.9);">A recapagem não é apenas economia; é responsabilidade ambiental. Ao reformar pneus, reduzimos o descarte e o consumo de recursos naturais, mantendo o mundo em movimento.</p>
+            <a href="#contact" class="btn btn-primary">Seja Sustentável</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title reveal">
+            <h2>Contato</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="footer-content reveal">
+            <div class="footer-section">
+                <h3>Sede Ijuí</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Rua Hermann Wassermann, 750</p>
+                <p>Distrito Industrial</p>
+                <p>Ijuí - RS</p>
+            </div>
+            <div class="footer-section">
+                <h3>Atendimento</h3>
+                <p><i class="fas fa-phone"></i> (55) 3332-8355</p>
+                <p><i class="fab fa-whatsapp"></i> (55) 99233-3898</p>
+                <p><i class="fas fa-envelope"></i> atendimento@cootac.com.br</p>
+            </div>
+            <div class="footer-section">
+                <h3>Horário</h3>
+                <p>Segunda à Sexta:</p>
+                <p>Horário Comercial</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 COOTAC - Cooperativa dos Transportadores Autônomos de Carga de Ijuí Ltda.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Excelência e Cooperação no Transporte</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/554933291555" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Fale conosco</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="index.js"></script>
+</body>
+</html>
